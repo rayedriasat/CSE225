@@ -35,29 +35,32 @@
  Helper functions are created to avoid code duplication. You can use them, or you can write your own.
 */
 
-
 #include <iostream>
 #include "quetype.cpp"
 using namespace std;
 
-void checkEmpty(bool b) {                        // Helper function to check if the stack is empty
+void checkEmpty(bool b)
+{ // Helper function to check if the stack is empty
     if (b)
         cout << "Queue is Empty" << endl;
     else
         cout << "Queue is not Empty" << endl;
 }
 
-void checkFull(bool b) {                         // Helper function to check if the list is full
+void checkFull(bool b)
+{ // Helper function to check if the list is full
     if (b)
         cout << "Queue is full" << endl;
     else
         cout << "Queue is not full" << endl;
 }
 
-void Print(QueType<int> &queType) {              // Helper function to print the list
+void Print(QueType<int> &queType)
+{ // Helper function to print the list
     QueType<int> temp;
 
-    while (!queType.IsEmpty()) {
+    while (!queType.IsEmpty())
+    {
         int value;
         queType.Dequeue(value);
         cout << value << " ";
@@ -65,74 +68,76 @@ void Print(QueType<int> &queType) {              // Helper function to print the
     }
     cout << endl;
 
-    while (!temp.IsEmpty()) {
+    while (!temp.IsEmpty())
+    {
         int value;
         temp.Dequeue(value);
         queType.Enqueue(value);
     }
 }
 
-int main() {
+int main()
+{
 
     // First Task
-    QueType<int> queue(5);                       // Create a queue of integer sof size 5
+    QueType<int> queue(5); // Create a queue of integer sof size 5
 
-    checkEmpty(queue.IsEmpty());                 // Print if the queue is empty or not
+    checkEmpty(queue.IsEmpty()); // Print if the queue is empty or not
 
-    queue.Enqueue(5);                            // Enqueue four items 5, 7, 4, 2
+    queue.Enqueue(5); // Enqueue four items 5, 7, 4, 2
     queue.Enqueue(7);
     queue.Enqueue(4);
     queue.Enqueue(2);
 
-    checkEmpty(queue.IsEmpty());                 // Print if the queue is empty or not
+    checkEmpty(queue.IsEmpty()); // Print if the queue is empty or not
 
-    checkFull(queue.IsFull());                   // Print if the queue is full or not
+    checkFull(queue.IsFull()); // Print if the queue is full or not
 
-    queue.Enqueue(6);                            // Enqueue another item 6
+    queue.Enqueue(6); // Enqueue another item 6
 
-    Print(queue);                                // Print the values in the queue
+    Print(queue); // Print the values in the queue
 
-    checkFull(queue.IsFull());                   // Print if the queue is full or not
+    checkFull(queue.IsFull()); // Print if the queue is full or not
 
-    if (!queue.IsFull())                         // Enqueue another item 8
+    if (!queue.IsFull()) // Enqueue another item 8
         queue.Enqueue(8);
     else
         cout << "Queue Overflow" << endl;
 
-    int d;                                       // Dequeue two items
+    int d; // Dequeue two items
     queue.Dequeue(d);
     queue.Dequeue(d);
 
-    Print(queue);                                // Print the values in the queue
+    Print(queue); // Print the values in the queue
 
-    queue.Dequeue(d);                            // Dequeue three items
+    queue.Dequeue(d); // Dequeue three items
     queue.Dequeue(d);
     queue.Dequeue(d);
 
-    checkEmpty(queue.IsEmpty());                 // Print if the queue is empty or not
+    checkEmpty(queue.IsEmpty()); // Print if the queue is empty or not
 
-    if (!queue.IsEmpty())                        // Dequeue an item
+    if (!queue.IsEmpty()) // Dequeue an item
         queue.Dequeue(d);
     else
         cout << "Queue Underflow" << endl;
 
-
     // Second Task
-    QueType<string> binary;                      // Create an empty queue
+    QueType<string> binary; // Create an empty queue
     int n;
     string var;
     cin >> n;
 
-    binary.Enqueue("1");                         // Enqueue the first binary number "1" to the queue
+    binary.Enqueue("1"); // Enqueue the first binary number "1" to the queue
 
-    while (n--) {                                // Run a loop for generating and printing "n" binary numbers
-        binary.Dequeue(var);                     // Dequeue and print the value
+    while (n--)
+    {                        // Run a loop for generating and printing "n" binary numbers
+        binary.Dequeue(var); // Dequeue and print the value
         string s1 = var;
         cout << s1 << endl;
 
         string s2 = s1;
-        binary.Enqueue(s1.append("0"));          // Append "0" at the dequeued value and enqueue it
-        binary.Enqueue(s2.append("1"));          // Append "1" at the dequeued value and enqueue it
+        binary.Enqueue(s1.append("0")); // Append "0" at the dequeued value and enqueue it
+        binary.Enqueue(s2.append("1")); // Append "1" at the dequeued value and enqueue it
     }
 
     return 0;

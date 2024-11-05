@@ -1,34 +1,44 @@
 #include "studentInfo.h"
 
-studentInfo::studentInfo(int id, string name, double cgpa) {
+studentInfo::studentInfo(int id, string name, double cgpa)
+{
     this->id = id;
     this->name = name;
     this->cgpa = cgpa;
 }
 
-studentInfo::studentInfo() {
-
+studentInfo::studentInfo()
+{
 }
 
-studentInfo::studentInfo(int id) {
+studentInfo::studentInfo(int id)
+{
     this->id = id;
 }
 
-bool studentInfo::operator==(studentInfo s) {
+bool studentInfo::operator==(studentInfo s)
+{
     if (this->id == s.id)
         return true;
     else
         return false;
 }
 
-bool studentInfo::operator!=(studentInfo s) {
+bool studentInfo::operator!=(studentInfo s)
+{
     if (this->id != s.id)
         return true;
     else
         return false;
 }
 
-ostream &operator<<(ostream &os, studentInfo &student) {
+ostream &operator<<(ostream &os, studentInfo &student)
+{
     os << student.id << ", " << student.name << ", " << student.cgpa << endl;
     return os;
+}
+
+void studentInfo::Print()
+{
+    cout << id << ", " << name << ", " << cgpa << endl;
 }
