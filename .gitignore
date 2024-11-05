@@ -1,6 +1,6 @@
 # IDE
 .idea/
-
+.vscode/
 
 # ignored files
 *.o
