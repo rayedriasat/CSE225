@@ -28,14 +28,16 @@
 
 using namespace std;
 
-void checkEmpty(bool b) {
+void checkEmpty(bool b)
+{
     if (b)
         cout << "Tree is Empty" << endl;
     else
         cout << "Tree is not Empty" << endl;
 }
 
-void itemFound(TreeType<int> &tree, int item) {
+void itemFound(TreeType<int> &tree, int item)
+{
     bool found;
     tree.RetrieveItem(item, found);
     if (found)
@@ -44,7 +46,8 @@ void itemFound(TreeType<int> &tree, int item) {
         cout << "Item is not found" << endl;
 }
 
-void insertRecursively(TreeType<int> &newTree, int array[], int start, int end) {
+void insertRecursively(TreeType<int> &newTree, int array[], int start, int end)
+{
     int mid = (start + end) / 2;
     newTree.InsertItem(array[mid]);
 
@@ -57,14 +60,15 @@ void insertRecursively(TreeType<int> &newTree, int array[], int start, int end) 
     insertRecursively(newTree, array, mid + 1, end);
 }
 
-int main() {
+int main()
+{
 
     // First Task
-    TreeType<int> tree;                          // Create a tree object
+    TreeType<int> tree; // Create a tree object
 
-    checkEmpty(tree.IsEmpty());                  // Print if the tree is empty or not
+    checkEmpty(tree.IsEmpty()); // Print if the tree is empty or not
 
-    tree.InsertItem(4);                          // Insert ten items
+    tree.InsertItem(4); // Insert ten items
     tree.InsertItem(9);
     tree.InsertItem(2);
     tree.InsertItem(7);
@@ -75,17 +79,18 @@ int main() {
     tree.InsertItem(5);
     tree.InsertItem(1);
 
-    checkEmpty(tree.IsEmpty());                  // Print if the tree is empty or not
+    checkEmpty(tree.IsEmpty()); // Print if the tree is empty or not
 
-    cout << tree.LengthIs() << endl;             // Print the length of the tree
+    cout << tree.LengthIs() << endl; // Print the length of the tree
 
-    itemFound(tree, 9);                          // Retrieve 9 and print whether found or not
-    itemFound(tree, 13);                         // Retrieve 13 and print whether found or not
+    itemFound(tree, 9);  // Retrieve 9 and print whether found or not
+    itemFound(tree, 13); // Retrieve 13 and print whether found or not
 
     // Print the elements in the tree (inorder)
     tree.ResetTree(IN_ORDER);
     bool finish = false;
-    while (!finish) {
+    while (!finish)
+    {
         int value;
         tree.GetNextItem(value, IN_ORDER, finish);
         cout << value << " ";
@@ -95,7 +100,8 @@ int main() {
     // Print the elements in the tree (preorder)
     tree.ResetTree(PRE_ORDER);
     finish = false;
-    while (!finish) {
+    while (!finish)
+    {
         int value;
         tree.GetNextItem(value, PRE_ORDER, finish);
         cout << value << " ";
@@ -105,30 +111,33 @@ int main() {
     // Print the elements in the tree (postorder)
     tree.ResetTree(POST_ORDER);
     finish = false;
-    while (!finish) {
+    while (!finish)
+    {
         int value;
         tree.GetNextItem(value, POST_ORDER, finish);
         cout << value << " ";
     }
     cout << endl;
 
-    tree.MakeEmpty();                            // Make the tree empty
-
+    tree.MakeEmpty(); // Make the tree empty
 
     // Second Task
-    TreeType<int> sequenceTree;                  // Create a tree object
-    int num = 10;
-    int sequence[] = {11, 9, 4, 2, 7, 3, 17, 0, 5, 1};
+    TreeType<int> sequenceTree; // Create a tree object
 
-    for (int i = 0; i < num; i++) {
+    int sequence[] = {11, 9, 4, 2, 7, 3, 17, 0, 5, 1};
+    int sequenceLength = sizeof(sequence) / sizeof(int);
+
+    for (int i = 0; i < sequenceLength; i++)
+    {
         sequenceTree.InsertItem(sequence[i]);
     }
 
-    int n, arr[num + 10], index = 0;
+    int n, arr[sequenceLength], index = 0;
 
     sequenceTree.ResetTree(IN_ORDER);
     finish = false;
-    while (!finish) {
+    while (!finish)
+    {
         sequenceTree.GetNextItem(n, IN_ORDER, finish);
         arr[index++] = n;
     }
@@ -139,7 +148,8 @@ int main() {
 
     newTree.ResetTree(PRE_ORDER);
     finish = false;
-    while (!finish) {
+    while (!finish)
+    {
         newTree.GetNextItem(n, PRE_ORDER, finish);
         cout << n << " ";
     }
