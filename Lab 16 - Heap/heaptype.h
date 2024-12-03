@@ -1,10 +1,14 @@
 #ifndef HEAP_TYPE_H
 #define HEAP_TYPE_H
 
-class FullHeap {};
-class EmptyHeap {};
+class FullHeap
+{
+};
+class EmptyHeap
+{
+};
 
-template<class ItemType>
+template <class ItemType>
 class HeapType
 {
 public:
@@ -16,13 +20,12 @@ public:
     void Insert(ItemType newItem);
     void Delete(ItemType &item);
     void Print();
+
 private:
     int length;
-    ItemType* elements;
+    ItemType *elements;
     int maxItems;
-    void ReheapDown(int root, int
-    bottom);
-    void ReheapUp(int root, int
-    bottom);
+    void ReheapDown(int root, int bottom);
+    void ReheapUp(int root, int bottom);
 };
 #endif
